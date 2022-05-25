@@ -1,0 +1,11 @@
+'Erstellen einer Message Box, falls Yes eingegeben, geht es in den If answser Block, fals nicht in den Leeren Else Block
+Dim answer As Integer
+answer = MsgBox("Haben Sie alle Daten eingegeben? Wenn ja, Drücken sie auf Ja, Falls Nein auf Abbrechen", vbYesNo + vbInformation, "Korrekt?")
+'Hier wenn Ja 
+If answer = vbYes Then
+Erstellen
+Suchen (Alter)
+Ausgabe
+'hier wenn nein
+Else
+End If

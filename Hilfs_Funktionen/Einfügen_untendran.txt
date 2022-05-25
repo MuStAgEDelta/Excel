@@ -1,0 +1,15 @@
+Sub Ausgabe()
+
+'aktiviert Mappe
+ThisWorkbook.Worksheets("Start_Mappe").Activate
+' Einfügen der Variablen rechts in die Zeilen ab Reihe 14, und bis zur 8ten Zeile
+Cells(Application.Max(14, Cells(Rows.Count, 1).End(xlUp).Row + 1), 1) = Erstellungsdatum
+Cells(Application.Max(14, Cells(Rows.Count, 2).End(xlUp).Row + 1), 2) = Grundlage_ID
+Cells(Application.Max(14, Cells(Rows.Count, 3).End(xlUp).Row + 1), 3) = WellenNummer
+Cells(Application.Max(14, Cells(Rows.Count, 4).End(xlUp).Row + 1), 4) = Anzahl
+Cells(Application.Max(14, Cells(Rows.Count, 5).End(xlUp).Row + 1), 5) = MaxCounter
+Cells(Application.Max(14, Cells(Rows.Count, 6).End(xlUp).Row + 1), 6) = Mehrere_Wellen
+Cells(Application.Max(14, Cells(Rows.Count, 7).End(xlUp).Row + 1), 7) = Alter_Max
+Cells(Application.Max(14, Cells(Rows.Count, 8).End(xlUp).Row + 1), 8) = Alter
+ 
+End Sub

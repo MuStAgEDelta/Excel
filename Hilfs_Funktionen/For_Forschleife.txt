@@ -1,0 +1,20 @@
+'Einfügen child_id
+Dim i As Long
+For i = 2 To Zeilenanzahl
+     If ActiveSheet.Rows(i).Hidden = False Then
+    Cells(i, 2) = WellenNummer + CStr(Kalenderwoche) + CStr(Jahr) + CStr(i) + CStr(Mehrere_Wellen)
+    Cells(i, 53) = "Flagged"
+    MaxCounter = MaxCounter + 1
+    If MaxCounter = Anzahl Then Exit For
+    End If
+Next
+
+Dim a As Long
+For a = 2 To Zeilenanzahl
+    If ActiveSheet.Rows(a).Hidden = False Then
+    Cells(a, 1) = "Welle " + WellenNummer
+    End If
+    If a = i Then Exit For
+   
+    
+Next

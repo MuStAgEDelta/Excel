@@ -1,0 +1,4 @@
+Sub Reset()
+'setzt alle Filter zurück
+ActiveSheet.Range("A1:BD64000").AutoFilter
+End Sub 

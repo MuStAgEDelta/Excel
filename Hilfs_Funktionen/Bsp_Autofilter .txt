@@ -1,0 +1,6 @@
+
+'Filtert Die ganze Mappe welche aktiv ist, in Zeile 8 wird nun grösser als 25 und kleiner als 28 gefiltert
+ActiveSheet.Range("A1:BD64000").AutoFilter 8, 
+				Criteria1:="<=" & CDbl(25), _
+                                Operator:=xlAnd, _
+                                Criteria2:=">=" & CDbl(28)

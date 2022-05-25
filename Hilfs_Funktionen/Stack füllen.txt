@@ -1,0 +1,12 @@
+'Speichern der HousholdIds in Stack
+Dim b As Long
+For b = 2 To Zeilenanzahl
+    If ActiveSheet.Rows(b).Hidden = False Then
+	'auslesen derZeile 6 und einfügen in den Stack 
+    HousholdID = ThisWorkbook.Sheets("Tabelle1").Cells(b, 6)
+    stack.Add HousholdID
+   End If
+   If b = i Then Exit For
+Next
+ 
+ 
