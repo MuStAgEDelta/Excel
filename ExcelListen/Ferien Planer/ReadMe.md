@@ -1,9 +1,9 @@
-## Sinn
+# Sinn
 Diese liste Hilft Ferien zu Planen wenn personen sich nicht einig sind. Es erstellt einen Randomisierten Plan, wer wann in die ferien gehen darf.
 ## Probleme
 kann einen deadlock bekommen, wenn zu viele Personen mit zu vielen Ferien eingegeben werden.
 
-## TBD
+# TBD
 
 ### mind 2 Wochen Am Stück
 Wert für 2 Wochen Am Stück einlesenbar machen. da viele Gesetzgeber Rechtlich mind 1 mal 2 Wochen am Stück geben müssen. Ist dies zurzeit per Default eingestellt.
@@ -15,7 +15,7 @@ Wäre praktisch wenn man einstellen könnte das 2 Pro Woche Ferien machen dürfe
 Wäre Praktisch wenn man noch Wunsch daten Einfügen könnte 
 
 
-## Use Cases 
+# Use Cases 
 
 ### Allen Mitarbeitern(MA) ist egal wann Sie ferien machen wollen
 
