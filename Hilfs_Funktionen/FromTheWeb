@@ -1,0 +1,21 @@
+'Diese Funktion schreibt den gesamten Inhalt einer Webseite auf das Tabellenblatt XXXX
+Sub callTheWeb
+Dim table As QueryTable
+
+Set table = XXXX.QueryTables.Add("URL;" & urlHaupt, XXXXX.Range("A1"))
+
+With table
+    .WebSelectionType = xlEntirePage
+    .WebFormatting = xlWebFormattingRTF
+    .Refresh
+End With
+End Sub
+
+'Diese Funktion löscht die aktuelle Query, da sonst der alte Wert erneut eingefügt wird
+
+Sub ClearSheetTable()
+Dim table As QueryTable
+For Each table In Tabelle3.QueryTables
+    table.Delete
+Next table
+End Sub
