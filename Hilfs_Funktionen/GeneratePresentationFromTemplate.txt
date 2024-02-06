@@ -1,0 +1,107 @@
+'Erstellt eine PP zum topic 
+
+Sub GeneratePresentationFromTemplate()
+    Dim pptApp As Object
+    Dim pptPres As Object
+    Dim oSlide As Slide
+    Dim customLayout As customLayout
+    Dim topics As Variant
+    Dim subTopic As Variant
+    Dim topic As String
+    Dim name As String
+    Dim namePrasentation As String
+    
+
+    
+    
+    ' Define topics and subtopics
+    name = "by TODO:YOURNAME"
+
+
+topic = "Topic"
+    topics = Array("SUBTOPIC1", _
+                   "SubTopic2")
+                   
+    namePrasentation = topic + ".pptx"
+    
+    
+    ' Ensure PowerPoint is running
+    On Error Resume Next
+    Set pptApp = GetObject(, "PowerPoint.Application")
+    If pptApp Is Nothing Then Set pptApp = CreateObject("PowerPoint.Application")
+    On Error GoTo 0
+    
+    pptApp.Visible = True
+    
+    ' Open a presentation from the specified template
+    Set pptPres = pptApp.Presentations.Open(TODO:TEMPLATEPFADEINGEBENSOLLTEENDUNG:potx:HABEN", WithWindow:=msoFalse)
+    
+    ' Add a "Titelfolie"
+    Set customLayout = FindCustomLayout(pptPres, "Titelfolie mit Text")
+    If Not customLayout Is Nothing Then
+        Set oSlide = pptPres.Slides.AddSlide(pptPres.Slides.Count + 1, customLayout)
+    End If
+    oSlide.Shapes.Title.TextFrame.TextRange.Text = "Lecture:Security"
+    oSlide.Shapes(2).TextFrame.TextRange.Text = topic
+    oSlide.Shapes(4).TextFrame.TextRange.Text = name
+    
+    ' Add a "Titelfolie mit text (Kurz)"
+    Set customLayout = FindCustomLayout(pptPres, "Titelfolie mit Text (Kurz)")
+    If Not customLayout Is Nothing Then
+        Set oSlide = pptPres.Slides.AddSlide(pptPres.Slides.Count + 1, customLayout)
+    End If
+    
+    ' Add a "Inhaltsverzeichnis" slide
+    Set customLayout = FindCustomLayout(pptPres, "Inhaltsverzeichnis")
+    
+    If Not customLayout Is Nothing Then
+        Set oSlide = pptPres.Slides.AddSlide(pptPres.Slides.Count + 1, customLayout)
+        ' Assuming the first shape is a text box where you want to list subtopics
+        Dim subTopicsText As String
+        subTopicsText = ""
+        For Each subTopic In topics
+            subTopicsText = subTopicsText & subTopic & vbCrLf
+        Next
+        oSlide.Shapes.Title.TextFrame.TextRange.Text = "Context"
+        oSlide.Shapes(1).TextFrame.TextRange.Text = subTopicsText
+    End If
+    
+    ' For each sub topic, add a "Kapitelseiten (Rot)" and a "Titel und Inhalt" slide
+    For Each subTopic In topics
+        ' Add "Kapitelseiten (Rot)"
+        Set customLayout = FindCustomLayout(pptPres, "Kapitelseiten (Rot)")
+        If Not customLayout Is Nothing Then
+            Set oSlide = pptPres.Slides.AddSlide(pptPres.Slides.Count + 1, customLayout)
+            ' Set text in the title placeholder
+            oSlide.Shapes.Title.TextFrame.TextRange.Text = subTopic
+        End If
+        
+        ' Add "Titel und Inhalt"
+        Set customLayout = FindCustomLayout(pptPres, "Titel und Inhalt")
+        If Not customLayout Is Nothing Then
+            Set oSlide = pptPres.Slides.AddSlide(pptPres.Slides.Count + 1, customLayout)
+            ' Set text in the title placeholder
+            oSlide.Shapes.Title.TextFrame.TextRange.Text = subTopic
+        End If
+    Next
+    
+    ' Save the presentation
+    pptPres.SaveAs TODO:SPEICHERUNGSPFADEINGEBEN + namePrasentation
+    
+    ' Clean up
+    Set pptPres = Nothing
+    Set pptApp = Nothing
+End Sub
+
+Function FindCustomLayout(pptPres As Object, layoutName As String) As customLayout
+    Dim customLayout As customLayout
+    For Each customLayout In pptPres.Designs(1).SlideMaster.CustomLayouts
+        If customLayout.name = layoutName Then
+            Set FindCustomLayout = customLayout
+            Exit Function
+        End If
+    Next
+    Set FindCustomLayout = Nothing
+End Function
+
+
